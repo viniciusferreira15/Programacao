@@ -1,0 +1,80 @@
+var numero_temqacertar = Math.floor((Math.random() * 50)*1);
+// numero_temqacertar = variavel para numero aleátorio
+var numero = parseInt(prompt("Escreva o numero que você acha que é. *Lembrando: O número está entre 1 e 10: "));
+//numero= numero para tentativas.
+while (numero != numero_temqacertar ){
+	if(numero!=numero_temqacertar){
+		//voce errou.
+		alert("Você errou. Digite outro número!");
+	}
+	if (numero>numero_temqacertar){
+		alert("Número maior que o digitado.")
+	}
+	else {
+		alert("Número menor que o digitado.")
+	}
+document.write("Número na qual você já utilizou:<strong>"+numero+"</strong>.<br>");
+var numero = parseInt(prompt("Escreva o numero que você acha que é"));
+}
+//voce acertou
+document.write("<strong>PARABÉNS, VOCÊ ACERTOU!</strong><br> O número escolhido foi:"+numero+".");
+alert("VOCÊ ACERTOU!!")
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function adicionaPalavras(array,palavras) {
+	// Variavel J - ? a posi??o a onde vai se fazer o corte.
+	j = 0;
+	// Vai repetir at? a variavel i ate a mesma ser maior do que o tamanho da variavel palavras
+	for (i=0; i <= palavras.length; i++){
+		// Se a string na variavel palavras na posi??o [i] for uma virgula fa?a:
+		if (palavras[i] == ",") {
+			// Variavel novo ? = a variavel palavras cortada na posi?ao(j(ultimo lugar que se fez o corte) at? a posi??o i(atual))
+			var novo = palavras.slice(j,i);
+			// Adicione na array a palavra cortada (novo)
+			array.push(novo);
+			// A variavel j vai ser igual a posi??o atual+1(por causa da virgula, para o proximo corte ser apartir dai)
+			j = i+1;
+		}
+		// Se estiver no ultimo caractere da palavras e a variavel j for diferente de i(posi??o do for)
+		if (i == palavras.length && j != i) {
+			// Nova palavra vai ser cortada na posi??o do J(ultimo corte) - a posi??o atual (i), at? a posi??o atual (i)
+			var novo = palavras.slice(j-i,i);
+			// Variavel (j) igual a posi??o atual (i)
+			j = i
+			// Adiciona o novo item ao array
+			array.push(novo);
+		}
+	}
+}
+	// faz um numero aleatorio de 0 a 10
+	var acertar = Math.floor((Math.random() * 10) + 1);
+
+	function jogo(nacerta,ntentou,pontos,tentativas) {
+
+
+		if (nacerta == parseInt(ntentou)) {
+			// vc acertou	
+			alert("VOC? GANHOU !!! PARAB?NS !!! O NUMERO ERA: "+nacerta)
+		}
+
+		else{
+			// vc errou
+			adicionaPalavras(tentativas,ntentou)
+			document.write("<br><strong>Pontos</strong>: "+pontos+"<br>Voc? j? tentou os seguintes numeros: "+tentativas)
+			var ntentou = prompt("Digite o numero que voc? acha que ?")
+			jogo(nacerta,ntentou,pontos-1,tentativas)
+
+		}
+	}
+
+	document.write("O Numero que voc? tem que acertar est? entre 0 e 10")
+
+	var tentou = prompt("Digite o numero que voc? acha que ?")
+	var tentativas = new Array ();
+
+	jogo(acertar,tentou,100,tentativas)
+
+
